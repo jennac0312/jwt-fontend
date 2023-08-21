@@ -16,6 +16,18 @@ export const UserProvider = ( { children } ) => {
     // all functions to access our backend.. so async
     const login = async ( formData ) => {
         // need parameter form data which is prob username and password
+
+        let response = await axios( { 
+            // all from auth.js router.post for login and authentication
+
+            method: 'POST', // bc we are logging in and sending info
+            url: 'http://localhost:5000/api/auth', // from backend route
+            data: formData // what data we are sending
+
+         } ) // object that has all info that we want to provide for the axious api request... in this cause our api is our backend
+
+        //  would you like to accept cookies from this website?
+        setCookies( 'token', res.data.token ) // saving token response in "token" ... this is your token for logging in
     }
 
     return (
