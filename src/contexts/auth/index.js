@@ -27,6 +27,7 @@ export const UserProvider = ( { children } ) => {
          } ) // object that has all info that we want to provide for the axious api request... in this cause our api is our backend
 
         //  would you like to accept cookies from this website?
+        // set cookies as the token
         setCookies( 'token', res.data.token ) // saving token response in "token" ... this is your token for logging in
     }
 
