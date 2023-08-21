@@ -10,7 +10,12 @@ const ProtectedRoutes = () => {
 
     // if token saved in cookies, redirect to protected route. otherwise say not authorized
 
-    return cookies.token ? <Outlet/> : <h1>You are not authorized to view this page! </h1>
+    return (
+        cookies.token ? 
+        ( <Outlet/> )
+        :
+        <h1>You are not authorized to view this page! </h1>
+    )
 }
 
 export default ProtectedRoutes
