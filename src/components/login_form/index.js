@@ -16,7 +16,7 @@ const LoginForm = ({ setNewUser }) => {
   const onChange = ( e ) => {
     setFormData({
       ...formData, //spread previous data
-      [ e.target.name ]: e.target.value // name attribute from event target ( input name="email" )
+      [ e.target.name ]: e.target.value // key becomes value of name attribute from event target ( input name="email" )
     })
   }
 
