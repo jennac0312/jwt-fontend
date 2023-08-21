@@ -72,6 +72,8 @@ export const UserProvider = ( { children } ) => {
     // every time cookies changes its going to look at the values passed. if the cookies havent changed we wont invoke these passed, if cookies did change then we will re-run these funcitons
     // if cookies never changes we odnt have ot rerun time intensive functions... if something is already cached for cookies, none of these functions need to be rerun
     // useMemo keeps our app fast
+    // use memo = caching a value so it doesnt need to be recalulated
+
 
     return (
         <AppContext.Provider>
@@ -79,3 +81,6 @@ export const UserProvider = ( { children } ) => {
         </AppContext.Provider>
     )
 }
+
+// last step is to export for access outside
+//  we are separating context so we know which specific context is being used
