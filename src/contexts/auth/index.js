@@ -53,7 +53,7 @@ export const UserProvider = ( { children } ) => {
 
     // we are creating a json web token each time
 
-    
+
     const logOut = () => {
         [ 'token' ].forEach(( obj ) => {
             removeCookie( obj )
@@ -61,6 +61,17 @@ export const UserProvider = ( { children } ) => {
         // anytime we set cookies we are doing a key value pair... aka objects
         // we hit logout button it'll go thru each cookie we have saved and remove them one by one
     }
+
+    const value = useMemo(
+        () => ({
+            // use memo takes and anon function
+            cookies, login, logOut, signUp
+        }),
+        [ cookies ] // dependency
+    )
+    // every time cookies changes its going to look at the values passed. if the cookies havent changed we wont invoke these passed, if cookies did change then we will re-run these funcitons
+    // if cookies never changes we odnt have ot rerun time intensive functions... if something is already cached for cookies, none of these functions need to be rerun
+    // useMemo keeps our app fast
 
     return (
         <AppContext.Provider>
