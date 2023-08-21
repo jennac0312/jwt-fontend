@@ -76,7 +76,8 @@ export const UserProvider = ( { children } ) => {
 
 
     return (
-        <AppContext.Provider>
+        <AppContext.Provider value={ value }>
+            {/* all children have access to value */}
             { children }
         </AppContext.Provider>
     )
@@ -84,3 +85,10 @@ export const UserProvider = ( { children } ) => {
 
 // last step is to export for access outside
 //  we are separating context so we know which specific context is being used
+
+export const useAuth = () => {
+    return useContext(AppContext)
+}
+// now that we have multiple contexts we have to call each context. this makes it simpler somehow?
+
+// created funciton that allows us to use this specific context we just created. to use, we clal on this function here
