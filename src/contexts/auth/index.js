@@ -92,3 +92,5 @@ export const useAuth = () => {
 // now that we have multiple contexts we have to call each context. this makes it simpler somehow?
 
 // created funciton that allows us to use this specific context we just created. to use, we clal on this function here
+
+// use auth is now a custom hook. shoutout sola for pointing it out

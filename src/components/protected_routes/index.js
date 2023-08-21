@@ -7,12 +7,10 @@ const ProtectedRoutes = () => {
     // going to destructure cookies from useAuth context
 
     const { cookies } = useAuth() // destructuring cookies value from useauth state... going to index auth and using the exported function tht useing created context to grab cookies value
-    
-  return (
-    <div>
-      
-    </div>
-  )
+
+    // if token saved in cookies, redirect to protected route. otherwise say not authorized
+
+    return cookies.token ? <Outlet/> : <h1>You are not authorized to view this page! </h1>
 }
 
-export default index
+export default ProtectedRoutes
