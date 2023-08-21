@@ -24,11 +24,14 @@ export const UserProvider = ( { children } ) => {
             url: 'http://localhost:5000/api/auth', // from backend route
             data: formData // what data we are sending
 
+            // post req to this route that sends this data
+
          }) // object that has all info that we want to provide for the axious api request... in this cause our api is our backend
 
         //  would you like to accept cookies from this website?
         // set cookies as the token
         setCookies( 'token', response.data.token ) // saving token response in "token" ... this is your token for logging in
+        // key value { token: response.data.token }
     }
 
     // bring in formData from our form on the front end
@@ -39,9 +42,23 @@ export const UserProvider = ( { children } ) => {
             method: 'POST',
             url: 'localhost://5000/api/users',
             data: formData
+
+            // post req to this route that sends this data
+
         })
 
         setCookies( 'token', response.data.token ) // your token
+        // when we sign up we are automatically logged in. why? bc thats what our route does... it signs in when we register to avoid needing to log in after
+    }
+
+    // we are creating a json web token each time
+
+    const logOut = () => {
+        [ 'token' ].forEach(( obj ) => {
+            removeCookie( obj )
+        })
+        // anytime we set cookies we are doing a key value pair... aka objects
+        // we hit logout button it'll go thru each cookie we have saved and remove them one by one
     }
 
     return (
