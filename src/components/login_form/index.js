@@ -12,7 +12,6 @@ const LoginForm = ({ setNewUser }) => {
     setNewUser(true);
   };
 
-
   const onChange = ( e ) => {
     setFormData({
       ...formData, // spread previous data ( to not lose/ overwrite it )
@@ -20,10 +19,19 @@ const LoginForm = ({ setNewUser }) => {
     })
   }
 
+  // now handle submit... accessing backend so async
+  const onSubmit = async ( e ) => {
+    e.preventDefault() // prevent default refresh
+    console.log( formData ) //test as we go
+  }
+
   return (
     <div className='forms'>
       <h2>Login</h2>
-      <form autoComplete='off'>
+      <form 
+        autoComplete='off'
+        onSubmit={ (e) => onSubmit(e) }
+      >
         <label htmlFor='email'>Email: </label>
         <input 
           type='email' 
