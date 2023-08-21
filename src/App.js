@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/auth' element={<AuthPage />} />
         <Route element={<ProtectedRoutes />}>
-          {/* nest necessary routes inside */}
+          {/* nest protected routes inside */}
           {/* unless there is a cookies, we will only see Outlet component */}
           <Route path='/dashboard' element={<Dashboard />} />
         </Route>
